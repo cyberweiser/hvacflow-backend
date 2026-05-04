@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hvacflow-api
+    env: node
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        # PostgreSQL connection string – you’ll fill this in Render UI
+        value: postgres://user:password@localhost:5432/hvacflow
+      - key: JWT_SECRET
+        # Generate a random secret and paste here
+        value: change-me-in-render
